@@ -19,14 +19,17 @@ interface FormInput {
 
 const Post = ({ post }: Props) => {
     const [submitted, setSubmitted] = useState(false);
+    const [isSending, setIsSending] = useState(false);
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormInput>();
 
     const submitForm: SubmitHandler<FormInput> = async (data) => {
+        setIsSending(true);
         fetch('/api/comment', {
             method: 'POST',
             body: JSON.stringify(data)
         }).then((res) => setSubmitted(true)).catch((e) => console.log(e))
+        setIsSending(false);
     }
 
     return <main>
@@ -87,7 +90,7 @@ const Post = ({ post }: Props) => {
                     {errors.comment && <span className="text-red-500">The Comment Field is required</span>}
                 </label>
 
-                <input type="submit" className="shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 text-xl rounded max-w-xs cursor-pointer shadow-yellow-200" />
+                <input type="submit" className="shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 text-xl rounded max-w-xs cursor-pointer shadow-yellow-200" disabled={isSending} value={isSending ? 'Submit' : 'Wait...'} />
             </form>}
 
         <div className="flex flex-col p-10 my-10 max-w-2xl mx-auto shadow shadow-yellow-500 space-y-2">

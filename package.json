@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.1.2",
     "@sanity/client": "^2.23.2",
     "next": "latest",
     "next-sanity": "^0.4.0",

@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+akblog/node_modules
+
 # testing
 /coverage
 

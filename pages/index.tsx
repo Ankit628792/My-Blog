@@ -8,9 +8,6 @@ interface Props {
   posts: Post[]
 }
 
-// preeti.malhotra@avizva.com 
-// react developers with 6-9 years of experirnce
-
 export default function Home({ posts }: Props) {
   return (
     <div className='max-w-7xl mx-auto pb-10'>

@@ -5,6 +5,7 @@ import { Post as PostInterface } from "../../typing";
 import PortableText from 'react-portable-text'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useState } from "react";
+import Head from 'next/head'
 
 interface Props {
     post: PostInterface
@@ -33,6 +34,10 @@ const Post = ({ post }: Props) => {
     }
 
     return <main>
+        <Head>
+            <title>Blog | {post.title}</title>
+            <link rel="icon" href="/logo.png" />
+        </Head>
         <Header />
         <img className="h-96 object-contain w-full" src={urlFor(post.mainImage).url()!} alt="" />
         <article className="max-w-3xl mx-auto p-5">
